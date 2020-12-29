@@ -1,0 +1,33 @@
+{% extends 'cico_app/base.html' %}
+
+{% block title %}Person List | CICO{% endblock %}
+
+{% block content %}
+
+<!--Event Listing-->
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">EDIPI</th>
+        <th scope="col">Rank</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Category</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for person in persons %}
+    <tr>
+        <th scope="row">{{ person.edipi }}</th>
+        <th scope="row">{{ person.rank }}</th>
+        <th scope="row">{{ person.lname }}</th>
+        <th scope="row">{{ person.fname }}</th>
+        <th scope="row">{{ person.phone }}</th>
+        <th scope="row">{{ person.category }}</th>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

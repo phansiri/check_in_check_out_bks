@@ -1,0 +1,15 @@
+{% extends 'cico_app/base.html' %}
+
+{% block title %}Event Edit | CICO{% endblock %}
+
+{% block scanner %}
+
+<div class="container-fluid m-5">
+    <form action="" method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'cico_app/base.html' %}
+
+{% block title %}Person Edit | CICO{% endblock %}
+
+{% block scanner %}
+
+
+<!--<div class="container">-->
+    <div class="row bg-secondary">
+        <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+            <h1 class="display-4 py-2 text-truncate">Review Info</h1>
+            <div class="px-2">
+                <form action="" method="post" class="justify-content-center">{% csrf_token %}
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">EDIPI</span>
+                        </div>
+                        <input type="text" class="form-control" name="edipi" value="{{ person.edipi }}" maxlength="11" required="" id="id_edipi" readonly>
+                    </div>
+
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Rank</span>
+                        </div>
+                        <input type="text" class="form-control text-uppercase" name="rank" value="{{ person.rank }}" required="" id="id_rank" readonly>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Last Name</span>
+                        </div>
+                        <input type="text" class="form-control text-uppercase" name="lname" value="{{ person.lname }}" required="" id="id_lname" readonly>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">First Name</span>
+                        </div>
+                        <input type="text" class="form-control text-uppercase" name="fname" value="{{ person.fname }}" required="" id="id_fname" readonly>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Branch</span>
+                        </div>
+                        <input type="text" class="form-control text-uppercase" name="branch" value="{{ person.branch }}"  required="" id="id_branch" readonly>
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Category</span>
+                        </div>
+                        <input type="text" class="form-control text-uppercase" name="category" value="{{ person.category }}" required="" id="id_category" readonly>
+                    </div>
+
+                        <span class="badge badge-pill badge-danger">Update Please</span>
+                    <div class="input-group input-group-lg mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Phone</span>
+                        </div>
+                        <input type="text" class="form-control bg-info font-italic text-warning" name="phone" value="{{ person.phone }}" required="" id="id_phone" placeholder="Input a phone number">
+                        <div class="input-group-append">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg" autofocus>Verified</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<!--</div>-->
+
+
+
+{% endblock %}
