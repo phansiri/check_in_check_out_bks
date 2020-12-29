@@ -26,6 +26,14 @@ DJ_SECRET_KEY=super_secret_key
 DATABASE_URL=postgres://{user}:{password}@{hostname}:{port}/{database-name}
 ```
 1. In the root of the repo on the command line, type `docker-compose up --build`
+1. You will notice that your database does not exist
+   1. Run: `docker-compose down -v` This will removed the persistent stored volume
+   1. Run `docker-compose up --build` again and it ought to apply.
+   1. In a different terminal, run to ensure models are in the database:
+   1. `docker-compose exec web python manage.py migrate`
+      * If it asks you to make migrations first, run:
+         * `docker-compose exec web python manage.py makemigrations`
+
 1. Open [http://0.0.0.0:8000](http://0.0.0.0:8000)
 A step by step series of examples that tell you how to get a development env running
    
