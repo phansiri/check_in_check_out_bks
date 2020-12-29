@@ -5,15 +5,18 @@ This is a simple docker django application that works with a scanner that reads 
 helps automate the process of checking in and out without the need of the Marine on duty to fill out a single physical
 logbook.
 
+
 ## Getting Started
 
 `docker-compose up --build`
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+
 ### Prerequisites
 
 1. Docker: [Get Docker](https://docs.docker.com/get-docker/)
 1. Python: [Get Python](https://www.python.org/downloads/)
+
 
 ### Installing
 
@@ -41,9 +44,12 @@ A step by step series of examples that tell you how to get a development env run
 ## Running the tests
 
 1. To run tests, ensure the docker-compose is up with
-  * `docker-compose up`
+   * `docker-compose up`
 1. After it is up and running, open another terminal and run:
-  * `docker-compose exec web python manage.py test`
+   * `docker-compose exec web python manage.py test`
+1. In order to see the admin backend, a super user must be created by running:
+   * `docker-compose exec web python manage.py createsuperuser`
+
 
 ## Built With
 
@@ -52,13 +58,13 @@ A step by step series of examples that tell you how to get a development env run
 * [Docker](https://docs.docker.com/) - Containerization  
 
 
-
 ## Acknowledgments
 
 * [Django Docker Start](https://docs.docker.com/compose/django/)
 * [Django Girls Tutorial](https://tutorial.djangogirls.org/en/)
 * [Django, Postgress, Gunicorn, and Ngnix steps](https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/)
 * [Django with Env](https://medium.com/swlh/setting-up-a-secure-django-project-repository-with-docker-and-django-environ-4af72ce037f0)
+
 
 ## Useful commands or recommendations
 * `docker-compose exec web python manage.py startapp cico_app`
