@@ -19,10 +19,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. Install Docker and Python
 1. Download this repository
-1. Create an `.env` file inside the `cico_project` directory that contains the below example:
+1. Create an `.env` file inside the `cico_project` directory that contains the below example (please remove the curly brackets too):
 ```dotenv
-DJ_DEBUG=True
-DJ_SECRET_KEY=super_secret_key
+DJ_DEBUG={True}
+DJ_SECRET_KEY={super_secret_key}
 DATABASE_URL=postgres://{user}:{password}@{hostname}:{port}/{database-name}
 ```
 1. In the root of the repo on the command line, type `docker-compose up --build`
