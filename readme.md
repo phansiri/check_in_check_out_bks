@@ -5,6 +5,7 @@ This is a simple docker django application that works with a scanner that reads 
 helps automate the process of checking in and out without the need of the Marine on duty to fill out a single physical
 logbook.
 
+![Splash Page](website_photos/cico_splash_v1.png)
 
 ## Getting Started
 
