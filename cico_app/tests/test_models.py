@@ -1,5 +1,6 @@
 from django.test import TestCase
-from cico_app.models import Person, Event
+from cico_app.models import Person, Event, Scanner
+from django.utils import timezone
 
 
 class PersonTest(TestCase):
@@ -37,9 +38,10 @@ class PersonTest(TestCase):
         person = Person.objects.get(edipi='1234567898')
         self.assertEqual(person.phone, '08075432334')
 
-    def test_to_string(self):
+    def test_person_to_string(self):
         person = Person.objects.get(edipi='1234567898')
         self.assertEqual(str(person), 'SGT Smith, Joe')
+
 
 class EventTest(TestCase):
     def setUp(self) -> None:
@@ -48,3 +50,41 @@ class EventTest(TestCase):
         Person.objects.create(rank=rank, lname=lname, fname=fname, branch=branch,
                               category=category, edipi=edipi, phone=phone)
         initiator = Person.objects.get(edipi=1234567898)
+        check_out = timezone.now()
+        check_in = timezone.now()
+        Event.objects.create(initiator=initiator, check_out=check_out, check_in=check_in, location='PX',
+                             buddy='Mike Jones', complete=True)
+
+    def test_event_initiator(self):
+        person = Person.objects.get(edipi=1234567898)
+        event = Event.objects.get(initiator=person)
+        self.assertEqual(event.initiator, person)
+
+    def test_event_location(self):
+        person = Person.objects.get(edipi=1234567898)
+        event = Event.objects.get(initiator=person)
+        self.assertEqual(event.location, 'PX')
+
+    def test_event_buddy(self):
+        person = Person.objects.get(edipi=1234567898)
+        event = Event.objects.get(initiator=person)
+        self.assertEqual(event.buddy, 'Mike Jones')
+
+    def test_event_complete(self):
+        person = Person.objects.get(edipi=1234567898)
+        event = Event.objects.get(initiator=person)
+        self.assertEqual(event.complete, True)
+
+    def test_event_to_string(self):
+        person = Person.objects.get(edipi=1234567898)
+        event = Event.objects.get(initiator=person)
+        self.assertEqual(str(event), f'Initiator: {event.initiator}')
+
+
+class ScannerTest(TestCase):
+    def setUp(self) -> None:
+        Scanner.objects.create(barcode='hello world')
+
+    def test_scanner_barcode(self):
+        barcode = Scanner.objects.get(barcode='hello world')
+        self.assertEqual(barcode.barcode, 'hello world')
