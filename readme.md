@@ -30,22 +30,38 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. Install Docker and Python
 1. Download this repository
-1. Create an `.env` file inside the `cico_project` directory that contains the below example (please remove the curly brackets too):
-```dotenv
-DJ_DEBUG={True}
-DJ_SECRET_KEY={super_secret_key}
-DATABASE_URL=postgres://{user}:{password}@{hostname}:{port}/{database-name}
+```bash
+git clone https://github.com/phansiri/check_in_check_out_bks.git
 ```
+1. Create an `.env` file inside the `cico_project` directory that contains the below example:
+```dotenv
+DJ_DEBUG=True
+DJ_SECRET_KEY=super_secret_key
+DJ_ALLOWED_HOSTS=localhost 127.0.0.1 [::1] 0.0.0.0
+SQL_ENGINE=django.db.backends.postgresql
+SQL_DATABASE=cat_database_name
+SQL_USER=super_cool_user
+SQL_PASSWORD=super_secret_password
+SQL_HOST=db
+SQL_PORT=5432
+```
+1. Create an `.env.db` file inside the `cico_project` for the environment variables to create the database inside the postgres image.
+```dotenv
+POSTGRES_DB=cat_database_name
+POSTGRES_USER=super_cool_user
+POSTGRES_PASSWORD=super_secret_password
+```
+1. Ensure the information for the databases are the same between the `.env` and `.env.db`
 1. In the root of the repo on the command line, type `docker-compose up --build`
-1. You will notice that your database does not exist
+1. You will notice that your database will probably not exist
    1. Run: `docker-compose down -v` This will removed the persistent stored volume
-   1. Run `docker-compose up --build` again and it ought to apply.
+   1. Run `docker-compose up --build` and it ought to apply.
    1. In a different terminal, run to ensure models are in the database:
    1. `docker-compose exec web python manage.py migrate`
       * If it asks you to make migrations first, run:
          * `docker-compose exec web python manage.py makemigrations`
 
-1. Open [http://0.0.0.0:8000](http://0.0.0.0:8000)
+1. Open [http://localhost:8000](http://localhost:8000)
 A step by step series of examples that tell you how to get a development env running
    
 
