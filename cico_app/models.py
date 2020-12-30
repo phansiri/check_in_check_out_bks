@@ -30,7 +30,7 @@ class Event(models.Model):
         self.save()
 
     def __str__(self):
-        return f'Initiator: {self.initiator} - checked out: {self.check_out} - checked in: {self.check_in}'
+        return f'Initiator: {self.initiator}'
 
 
 class Scanner(models.Model):
