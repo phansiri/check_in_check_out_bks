@@ -42,6 +42,7 @@ class PersonTest(TestCase):
         person = Person.objects.get(edipi='1234567898')
         self.assertEqual(str(person), 'SGT Smith, Joe')
 
+
 class EventTest(TestCase):
     def setUp(self) -> None:
         rank, lname, fname, branch, category, edipi, phone = 'SGT', 'Smith', 'Joe', 'USMC', \
