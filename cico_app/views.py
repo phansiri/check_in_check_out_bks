@@ -33,15 +33,22 @@ def event_new(request, pk=None):
         'person': person,
         'form': form,
     }
-
     if request.method.lower() == 'post':
         form = EventForm(request.POST)
+        flag: bool
+
         if form.is_valid():
             event = form.save(commit=False)
             event.initiator = person
             event.location = request.POST['location']
+
             event.buddy = request.POST['buddy']
-            event.check_out = timezone.now()
+            if 'base' in request.POST.keys():
+                flag = True
+            else:
+                flag = False
+            event.base = flag
+            event.check_out = timezone.localtime(timezone.now())
             event.save()
         return redirect('event_list')
 
@@ -123,3 +130,10 @@ def scan(request):
         'form': None,
     }
     return render(request, 'cico_app/event_list.html', context)
+
+
+def reports(request):
+    context = {
+        'test': 'test',
+    }
+    return render(request, 'cico_app/reports.html', context)
