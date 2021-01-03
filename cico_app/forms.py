@@ -6,7 +6,7 @@ class EventForm(forms.ModelForm):
 
     class Meta:
         model = Event
-        fields = ('initiator', 'buddy', 'location')
+        fields = ('initiator', 'buddy', 'location', 'base')
 
 
 class PersonForm(forms.ModelForm):

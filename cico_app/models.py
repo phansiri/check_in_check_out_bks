@@ -25,7 +25,7 @@ class Event(models.Model):
     complete = models.BooleanField(default=False)
 
     def complete_event(self):
-        self.check_in = timezone.now()
+        self.check_in = timezone.localtime(timezone.now())
         self.complete = True
         self.save()
 
