@@ -3,6 +3,20 @@ from django.utils import timezone
 
 
 class Person(models.Model):
+    NONE = '-'
+    ALPHA = 'A'
+    BRAVO = 'B'
+    DCO = 'DCO'
+    HEADQUARTERS = 'HQ'
+    SERVICE = 'SVC'
+    COMPANY_CHOICES = [
+        (NONE, '---'),
+        (ALPHA, 'Alpha'),
+        (BRAVO, 'Bravo'),
+        (DCO, 'DCO-IDM'),
+        (HEADQUARTERS, 'Headquarters'),
+        (SERVICE, 'Service'),
+    ]
     rank = models.CharField(max_length=7)
     lname = models.CharField(max_length=27)
     fname = models.CharField(max_length=21)
@@ -10,6 +24,7 @@ class Person(models.Model):
     category = models.CharField(max_length=30)
     edipi = models.CharField(max_length=11)
     phone = models.CharField(max_length=20, null=True, blank=True)
+    company_in_battalion = models.CharField(max_length=3, choices=COMPANY_CHOICES, default=NONE)
 
     def __str__(self):
         return f'{self.rank} {self.lname}, {self.fname}'

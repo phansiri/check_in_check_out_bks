@@ -76,9 +76,9 @@ def person_edit(request, pk=None):
             person = form.save(commit=False)
             person.phone = request.POST['phone']
             person.save()
-            context = {
-                'person': person.pk
-            }
+            # context = {
+            #     'person': person.pk
+            # }
             return HttpResponseRedirect(reverse('event_new', args=(person.pk,)))
     form = PersonForm(instance=person)
     context = {
