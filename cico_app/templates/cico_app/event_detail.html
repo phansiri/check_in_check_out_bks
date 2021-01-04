@@ -5,39 +5,56 @@
 {% block content %}
 
 <h1>Event Detail</h1>
-
-<div class="row">
-    <div class="col-4">
-        <h2>Initiator Information</h2>
-
-        <h4>{{ event.initiator }}</h4>
-        <p>{{ event.initiator.phone }}</p>
-        <p>{{ event.initiator.branch }}</p>
-        <p>{{ event.initiator.edipi }}</p>
-        <p>{{ event.initiator.category }}</p>
+<div class="bg-light">
+    <div class="row">
+        <div class="col-5">
+            <table class="table-responsive">
+                <caption>Initiators Information</caption>
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Contact Info</th>
+                    <th scope="col">EDIPI</th>
+                    <th scope="col">Branch</th>
+                    <th scope="col">Category</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">{{ event.initiator }}</th>
+                    <th scope="row">{{ event.initiator.phone }}</th>
+                    <th scope="row">{{ event.initiator.edipi }}</th>
+                    <th scope="row">{{ event.initiator.branch }}</th>
+                    <th scope="row">{{ event.initiator.category }}</th>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col">
+            <h2>Event Information</h2>
+            <div>
+                {% if event.buddy.all %}
+                <p>
+                    {% for bud in event.buddy.all %}
+                    - {{ bud }} -
+                    {% endfor %}
+                </p>
+                {% else %}
+                <p>No buddies</p>
+                {% endif %}
+                <p>{{ event.check_out }}</p>
+                <p>{{ event.check_in }}</p>
+                <p>{{ event.location }}</p>
+                <p>
+                    {% if event.complete == True %}
+                    Completed
+                    {% else %}
+                    Not Completed
+                    {% endif %}
+                </p>
+            </div>
+        </div>
     </div>
-    <div class="col">
-        <h2>Event Information</h2>
-    </div>
-</div>
-
-
-<div>
-
-    {% if event.buddy.all %}
-    <p>
-        {% for bud in event.buddy.all %}
-        - {{ bud }} -
-        {% endfor %}
-    </p>
-    {% else %}
-    <p>No buddies</p>
-    {% endif %}
-
-    <p>{{ event.check_out }}</p>
-    <p>{{ event.check_in }}</p>
-    <p>{{ event.location }}</p>
-    <p>{{ event.complete }}</p>
 </div>
 
 {% endblock %}

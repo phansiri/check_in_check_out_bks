@@ -4,24 +4,20 @@
 
 
 {% block scanner %}
-
-<!--Form to Parse CAC-->
+<!--Scanner Section-->
 <div class="container align-content-center p-5">
     <form action="/scan/" method="post" class="scan-new">{% csrf_token %}
         <div class="input-group input-group-lg">
             <span class="input-group-text" id="inputGroup-sizing-lg">Scanner</span>
             <input type="text" class="form-control" aria-label="Scanner input" name="scanner" minlength="87"
-                   aria-describedby="inputGroup-sizing-lg" placeholder="Scan CAC here..." autofocus required>
+                   aria-describedby="inputGroup-sizing-lg" placeholder="Scan CAC here..." autofocus autocomplete="off" required>
         </div>
 
     </form>
 </div>
-
 {% endblock %}
 
-
 {% block content %}
-
 <!--Event Listing-->
 <div class="container-fluid">
 <table class="table table-sm table-hover bg-light">
@@ -39,7 +35,6 @@
     </thead>
     <tbody>
     {% for event in events %}
-
     <tr>
         <th scope="row"><a href="{% url 'event_detail' pk=event.pk %}">{{ event.initiator }}</a></th>
         <th scope="row">{{ event.initiator.phone }}</th>
@@ -67,8 +62,6 @@
             {% endif %}
         </th>
         </th>
-
-
     </tr>
     {% endfor %}
     </tbody>

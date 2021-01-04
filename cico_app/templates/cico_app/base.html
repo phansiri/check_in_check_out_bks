@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap-grid.css' %}">
     <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap-reboot.css' %}">
     <link rel="stylesheet" href="{% static 'css/cico_app.css' %}">
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body class="bg-dark">
-
 <!--Navigation-->
 <nav class="navbar smart-scroll navbar-expand-md navbar-light bg-info">
     <a class="navbar-brand text-white" href="{% url 'event_list' %}">Check In Check Out Tracker</a>
@@ -37,21 +37,15 @@
         </ul>
     </div>
 </nav>
-
-<!--Scanner Section-->
 {% block scanner %} {% endblock %}
-
 <!--Main Content Section-->
 {% block content %} {% endblock %}
-
 <!--Footer-->
 <footer class="text-center bg-info">
     <span class="text-white">Powered by Django, Bootstrap, and eventually Data Science</span>
     <div class="container"><small class="wrapper">Copyright © Lit Phansiri 2020 </small></div>
 </footer>
-
-<!--<script src="{% static 'js/add_buddy.js' %}"></script>-->
 <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-<script src="{% static 'vendor/bootstrap/js/bootstrap.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
 </body>
 </html>

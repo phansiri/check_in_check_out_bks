@@ -6,6 +6,8 @@
 
 <div class="container-fluid">
     <div class="row ">
+        <button type="reset" class="btn btn-danger btn-lg"><a href="{% url 'event_list' %}">Cancel</a></button>
+
         <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
             <h1 class="display-4 py-2 text-light">Initiate New Event</h1>
             <div class="px-2">
@@ -21,28 +23,19 @@
 
                     <input type="checkbox" class="btn-check" id="id_on_base" name="base" autocomplete="off">
                     <label class="btn btn-outline-success" for="id_on_base">On Base</label>
-<!--                    <label class="btn btn-outline-danger" for="id_off_base">Off Base</label>-->
-<!--                    <input type="checkbox" class="btn-check" id="id_off_base" name="base" autocomplete="off">-->
-
-<!--                    <input type="radio" class="btn-check" name="options-outlined" id="success-outlined" autocomplete="off" checked>-->
-<!--                    <label class="btn btn-outline-success" for="success-outlined">On Base</label>-->
-
-
-<!--                    <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined" autocomplete="off">-->
-<!--                    <label class="btn btn-outline-danger" for="danger-outlined">Off Base</label>-->
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Location</span>
                         </div>
-                        <input class="form-control form-control-lg" type="text" maxlength="300" name="location" placeholder="Location or Address" autofocus>
+                        <input class="form-control form-control-lg" type="text" maxlength="300" name="location" placeholder="Location or Address" required autofocus>
 
                     </div>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Buddy List</span>
                         </div>
-                        <input class="form-control form-control-lg" type="text" maxlength="100" name="buddy" placeholder="PFC Ramirez, John; LCpl Johnson, Sam" autofocus>
+                        <input class="form-control form-control-lg" type="text" maxlength="100" name="buddy" placeholder="PFC Ramirez, John; LCpl Johnson, Sam; or Blank" autofocus>
                     </div>
 
                     <button type="submit" class="btn btn-primary btn-lg" autofocus>Submit</button>
@@ -50,6 +43,7 @@
             </div>
         </div>
     </div>
+
 </div>
 
 {% endblock %}
