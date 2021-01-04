@@ -5,56 +5,52 @@
 {% block content %}
 
 <h1>Event Detail</h1>
-<div class="bg-light">
-    <div class="row">
-        <div class="col-5">
-            <table class="table-responsive">
-                <caption>Initiators Information</caption>
-                <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Contact Info</th>
-                    <th scope="col">EDIPI</th>
-                    <th scope="col">Branch</th>
-                    <th scope="col">Category</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">{{ event.initiator }}</th>
-                    <th scope="row">{{ event.initiator.phone }}</th>
-                    <th scope="row">{{ event.initiator.edipi }}</th>
-                    <th scope="row">{{ event.initiator.branch }}</th>
-                    <th scope="row">{{ event.initiator.category }}</th>
-                </tr>
-                </tbody>
-            </table>
+<div class="row">
+    <div class="col p-5">
+        <div class="card text-center">
+            <div class="card-header">
+                Initiator
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">{{ event.initiator }}, {{ event.initiator.edipi }} / {{ event.initiator.branch }}</h3>
+                <p class="card-text">Component: <b>{{ event.initiator.category }}</b></p>
+                <p class="card-text">Phone Number: <b>{{ event.initiator.phone }}</b></p>
+                <p class="card-text">Company: <b>{{ event.initiator.get_company_in_battalion_display }}</b></p>
+            </div>
+            <div class="card-footer text-muted">
+                Initiator
+            </div>
         </div>
-        <div class="col">
-            <h2>Event Information</h2>
-            <div>
-                {% if event.buddy.all %}
-                <p>
-                    {% for bud in event.buddy.all %}
-                    - {{ bud }} -
-                    {% endfor %}
-                </p>
-                {% else %}
-                <p>No buddies</p>
-                {% endif %}
-                <p>{{ event.check_out }}</p>
-                <p>{{ event.check_in }}</p>
-                <p>{{ event.location }}</p>
-                <p>
-                    {% if event.complete == True %}
-                    Completed
+    </div>
+    <div class="col p-5">
+        <div class="card text-center">
+            <div class="card-header">
+                Event
+            </div>
+            <div class="card-body">
+                <p class="card-text">Location: <b>{{ event.location }} -
+                    {% if event.base == True %}
+                    On Base
                     {% else %}
-                    Not Completed
+                    Off Base
                     {% endif %}
-                </p>
+                    </b></p>
+                <p class="card-text">Buddy: <b>{{ event.buddy}}</b></p>
+                <p class="card-text">Check Out: <b>{{ event.check_out|date:'Ymd@Hi' }}</b></p>
+                <p class="card-text">Check In: <b>
+                    {% if event.check_in %}
+                    {{ event.check_in|date:'Ymd@Hi' }}
+                    {% else %}
+                    Not Checked In yet...
+                    {% endif %}
+                </b></p>
+            </div>
+            <div class="card-footer text-muted">
+                Event
             </div>
         </div>
     </div>
 </div>
+
 
 {% endblock %}
