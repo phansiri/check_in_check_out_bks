@@ -74,11 +74,11 @@ def person_edit(request, pk=None):
         form = PersonForm(request.POST, instance=person)
         if form.is_valid():
             person = form.save(commit=False)
-            person.phone = request.POST['phone']
+
+            # need phone validation for US and Japanese number
+            # For now, just have the models validate the length
+            # person.phone = request.POST['phone']
             person.save()
-            # context = {
-            #     'person': person.pk
-            # }
             return HttpResponseRedirect(reverse('event_new', args=(person.pk,)))
     form = PersonForm(instance=person)
     context = {
@@ -114,12 +114,10 @@ def scan(request):
             if events.filter(initiator=person).exists():
                 # check if there is an event that is false...
                 if events.filter(initiator=person, complete=False).exists():
-                    print('Inside the complete false if it exists')
                     event = events.filter(initiator=person).get(complete=False)
                     event.complete_event()
                     return redirect('event_list')
                 else:
-                    print('Inside the complete true if it exists')
                     # needs to redirect to event creation
                     return HttpResponseRedirect(reverse('person_edit', args=(person.pk,)))
             else:
