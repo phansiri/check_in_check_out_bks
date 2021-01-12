@@ -78,9 +78,10 @@ class PDF417Barcode(CACBarcode):
         self.barcode_version = data[1]
 
         # Only version 1 and N supported
-        if self.barcode_version != "1" and self.barcode_version != "N":
-            print("Version", self.barcode_version, "not recognized!")
-            raise Exception
+        # if self.barcode_version != "1" and self.barcode_version != "N":
+        #     print('************************')
+        #     print("Version", self.barcode_version, "not recognized!")
+        #     raise Exception
 
         self.branch = self._getbranch(data[66])
         self.category = self._getcategory(data[65])
